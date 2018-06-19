@@ -17,11 +17,8 @@ function getJson() {
            datatype : 'jsonp',
         }).done(function(data) {
             if(data.ido && data.keido) {
-                ido = data.ido;
-                keido = data.keido;
-                var tyuusin = new google.maps.LatLng(ido, keido);
+                var tyuusin = new google.maps.LatLng(data.ido, data.keido);
                 map.setCenter(tyuusin);
             }   
         })
-        
 }
