@@ -1,4 +1,10 @@
-map {
-    width: 620px;
-    height: 400px;
+body {
+    width: auto;
+    height: auto;
+}
+
+#map {
+    position: absolute;
+    width: 98%;
+    height: 98%;
 }
