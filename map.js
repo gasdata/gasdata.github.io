@@ -18,7 +18,7 @@ function getJson() {
        url: "https://gai1219.github.io/data.json",
        datatype : 'jsonp',
     }).done(function(data) {
-        if(i == 0) {
+        if(i == 0 && data.dataid == 0) {
             console.log("最初のデータを取得");
             latestdata = data;
             i = data.dataid;
