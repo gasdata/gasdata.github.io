@@ -44,3 +44,6 @@ function setMarker() {
     })
     marker.setMap(map);
 }
+
+//        "ido":"35.710063",     
+//        "keido":"139.8107"
