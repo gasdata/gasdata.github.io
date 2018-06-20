@@ -1,6 +1,7 @@
 var map;
 var latestdata;
 var gotdata;
+var i;
 
 function onFirstOpenMap() {
     var opts = {
@@ -8,7 +9,7 @@ function onFirstOpenMap() {
         center: new google.maps.LatLng(35.658581, 139.745433)
       };
     map = new google.maps.Map(document.getElementById("map"), opts);
-    var i = 0;
+    i = 0;
 }
 
 function getJson() {
@@ -27,6 +28,7 @@ function getJson() {
                 latestdata = data;
                 i = data.dataid;
                 console.log("data更新成功！");
+                setMarker();
             } else {
                 console.log("dataidがおかしい");
             }
@@ -35,7 +37,7 @@ function getJson() {
 }
 
 function setMarker() {
-    var latlng = new google.map.LatLng(latestdata.ido, latestdata.keido);
+    var latlng = new google.maps.LatLng(latestdata.ido, latestdata.keido);
     var marker = new google.maps.Marker({
         position: latlng,
         title: "YAY"
