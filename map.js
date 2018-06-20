@@ -3,7 +3,15 @@ var latestdata;
 var gotdata;
 var i;
 
-function onFirstOpenMap() {
+var database = function(data) {
+    this.data = data;
+}
+
+function setDatabase(i, data) {
+    eval("var " + i + " = new database(data);");
+}
+
+function onFirstOpenMap() { //最初に地図が表示されたときの処理
     var opts = {
         zoom: 15,
         center: new google.maps.LatLng(35.658581, 139.745433)
@@ -18,11 +26,12 @@ function getJson() {
        url: "https://gai1219.github.io/data.json",
        datatype : 'jsonp',
     }).done(function(data) {
-        if(i == 0 && data.dataid == 0) {
+        if(i == 0) {
             console.log("最初のデータを取得");
             latestdata = data;
             i = data.dataid;
             setMarker();
+            setDatabase(i, latestdata);
         } else {
             if(data.dataid - 1 == i) {
                 latestdata = data;
@@ -41,7 +50,7 @@ function setMarker() {
     var marker = new google.maps.Marker({
         position: latlng,
         title: "YAY"
-    })
+    });
     marker.setMap(map);
 }
 
