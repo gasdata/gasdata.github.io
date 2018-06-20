@@ -1,4 +1,6 @@
 var map;
+var latestdata;
+var gotdata;
 
 function onFirstOpenMap() {
     var opts = {
@@ -6,20 +8,37 @@ function onFirstOpenMap() {
         center: new google.maps.LatLng(35.658581, 139.745433)
       };
     map = new google.maps.Map(document.getElementById("map"), opts);
+    var i = 0;
 }
 
 function getJson() {
-    var ido = 0;
-    var keido = 0;
     //Json取得する処理
     $.ajax({
-           url: "https://gai1219.github.io/data.json",
-           datatype : 'jsonp',
-        }).done(function(data) {
-            if(data.ido && data.keido) {
-                var tyuusin = new google.maps.LatLng(data.ido, data.keido);
-                map.setCenter(tyuusin);
-            }   
-        })
-    
+       url: "https://gai1219.github.io/data.json",
+       datatype : 'jsonp',
+    }).done(function(data) {
+        if(i == 0) {
+            console.log("最初のデータを取得");
+            latestdata = data;
+            i = data.dataid;
+            setMarker();
+        } else {
+            if(data.dataid - 1 == i) {
+                latestdata = data;
+                i = data.dataid;
+                console.log("data更新成功！");
+            } else {
+                console.log("dataidがおかしい");
+            }
+        }
+    })
+}
+
+function setMarker() {
+    var latlng = new google.map.LatLng(latestdata.ido, latestdata.keido);
+    var marker = new google.maps.Marker({
+        position: latlng,
+        title: "YAY"
+    })
+    marker.setMap(map);
 }
