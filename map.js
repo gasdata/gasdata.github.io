@@ -27,7 +27,7 @@ function getJson() {
             if(data.dataid - 1 == i) {
                 latestdata = data;
                 i = data.dataid;
-                console.log("data更新成功！");
+                console.log("data更新成功！" + i);
                 setMarker();
             } else {
                 console.log("dataidがおかしい");
