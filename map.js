@@ -21,4 +21,5 @@ function getJson() {
                 map.setCenter(tyuusin);
             }   
         })
+    
 }
