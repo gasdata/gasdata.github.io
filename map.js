@@ -2,13 +2,23 @@ var map;
 var latestdata;
 var gotdata;
 var i;
+var datacount;
 
-var database = function(data) {
-    this.data = data;
+function makeDatabase() {
+    for(var x = 0; x < 100; x++) {
+        eval("var data" + x + ";");
+        console.log(x + "番目のデータベース変数作成！");
+    }
+    for(var x = 0; x < 100; x++) {
+        eval("var marker" + x + ";");
+        console.log(x + "番目のマーカー変数作成！");
+    }
+    
 }
 
-function setDatabase(i, data) {
-    eval("var " + i + " = new database(data);");
+function setDatabase(datacount) {
+    eval("data" + datacount + " = " + latestdata + ";");
+    datacount++;
 }
 
 function onFirstOpenMap() { //最初に地図が表示されたときの処理
@@ -18,6 +28,8 @@ function onFirstOpenMap() { //最初に地図が表示されたときの処理
       };
     map = new google.maps.Map(document.getElementById("map"), opts);
     i = 0;
+    datacount = 0;
+    makeDatabase();
 }
 
 function getJson() {
@@ -31,11 +43,12 @@ function getJson() {
             latestdata = data;
             i = data.dataid;
             setMarker();
-            setDatabase(i, latestdata);
+            setDatabase(datacount);
         } else {
             if(data.dataid - 1 == i) {
                 latestdata = data;
                 i = data.dataid;
+                setDatabase(datacount);
                 console.log("data更新成功！" + i);
                 setMarker();
             } else {
@@ -47,11 +60,13 @@ function getJson() {
 
 function setMarker() {
     var latlng = new google.maps.LatLng(latestdata.ido, latestdata.keido);
-    var marker = new google.maps.Marker({
-        position: latlng,
-        title: "YAY"
-    });
-    marker.setMap(map);
+//    var marker = new google.maps.Marker({
+//        position: latlng,
+//        title: "YAY"
+//    });
+    eval("marker" + datacount + " = new google.maps.Marker({position: " + latlng + "});");
+//    marker.setMap(map);
+    eval("marker" + datacount + ".setMap(" + map + ");");
 }
 
 //        "ido":"35.710063",     
