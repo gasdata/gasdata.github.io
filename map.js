@@ -4,18 +4,6 @@ var gotdata;
 var i;
 var datacount;
 
-function makeDatabase() {
-    for(var x = 0; x < 100; x++) {
-        eval("var data" + x + ";");
-        console.log(x + "番目のデータベース変数作成！");
-    }
-    for(var x = 0; x < 100; x++) {
-        eval("var marker" + x + ";");
-        console.log(x + "番目のマーカー変数作成！");
-    }
-    
-}
-
 function setDatabase(datacount) {
     eval("data" + datacount + " = " + latestdata + ";");
     datacount++;
@@ -27,9 +15,6 @@ function onFirstOpenMap() { //最初に地図が表示されたときの処理
         center: new google.maps.LatLng(35.658581, 139.745433)
       };
     map = new google.maps.Map(document.getElementById("map"), opts);
-    i = 0;
-    datacount = 0;
-    makeDatabase();
 }
 
 function getJson() {
