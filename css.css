@@ -4,12 +4,12 @@ body {
 
 .button {
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 13px;
+    left: 13px;
     padding: 0;
     margin: 0;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     z-index: 10;
 }
 
@@ -40,7 +40,7 @@ body {
 }
 
 .menu ul {
-    margin-top: 30px;
+    margin-top: 38px;
     padding: 0;
     list-style: none;
 }
@@ -65,7 +65,7 @@ body {
     width: 100%;
     bottom: 0;
     color: white;
-    font-size: 12px;
+    font-size: 11px;
     background: #04B431;
     text-decoration: none;
     text-align: center;
