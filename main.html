@@ -3,14 +3,26 @@
     <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
-    <input type="button" value="テスト" onClick="getJson();">
+    
+    <div class="button">
+        <div id="open"></div>
+        <div id="close"></div>
+    </div>
+    
+    <nav class="menu">
+        <ul>
+            <li><a href="#">マップ</a></li>
+            <li><a href="#">リアルタイムデータ</a></li>
+            <p>Icons made by <a href="https://www.flaticon.com/authors/cole-bemis">Cole Bemis</a></p>
+        </ul>
+    </nav>
+    
     <div id="main">
         <div id="map"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="map.js"></script>
-    <script src="database.js"></script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOcZelESj-fCVMleyVLFm1wCQ20hzniNk&callback=onFirstOpenMap">
-    </script>
+    <script src="data.js"></script>
+    <script src="menu.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOcZelESj-fCVMleyVLFm1wCQ20hzniNk&callback=onFirstOpenMap"></script>
 </body>
