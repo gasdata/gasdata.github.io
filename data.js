@@ -14,11 +14,10 @@ function firstOpen() {
                     //異常なデータ スルー
                 }
             }
-            
             onOpenMap();
             firstSetMarker();
        }).fail(function(data) { //失敗
-            console.log("データ取得失敗");
+            showAlert("データ取得に失敗しました。");
        });
 }
 

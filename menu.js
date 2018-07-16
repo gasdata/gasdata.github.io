@@ -28,3 +28,13 @@ $("#main").click( function() {
         $(".menu").animate({"margin-left":'-190px'},300);
     }
 });
+
+function showAlert(msg) {
+    $(".alert p").text(msg);
+    $(".alert").animate({"margin-top":'0px'},300);
+    
+    var timeout = function(){
+        $(".alert").animate({"margin-top":'-75px'},300);
+    } 
+    setTimeout(timeout, 1000);
+}

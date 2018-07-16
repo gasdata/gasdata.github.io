@@ -29,14 +29,15 @@ body {
 
 .alert {
     position: fixed;
-    top: 13px;
-    right: 13px;
+    top: 10px;
+    right: 10px;
+    margin-top: -75px;
     padding: 0;
-    margin: 0;
     width: 200px;
     height: 65px;
     background: green;
     z-index: 10;
+    border-radius: 5px;
 }
 
 .alert p {
@@ -46,6 +47,7 @@ body {
     padding: 0;
     margin: 0;
     color: white;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
