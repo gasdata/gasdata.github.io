@@ -3,6 +3,7 @@ $(document).ready( function(){
     $("#close").hide();
     $(".menu").css("margin-left", "-190px");
     $("#all").hide();
+    $(".datawindow").hide();
 });
 
 //メニュー開いたとき
@@ -26,15 +27,20 @@ $("#main").click( function() {
         $("#open").show();
         $("#close").hide();
         $(".menu").animate({"margin-left":'-190px'},300);
-    }
+    } 
+});
+
+//データウィンドウクリックしたとき
+$(".datawindow").click( function() {
+    $(".datawindow").hide();
 });
 
 function showAlert(msg) {
     $(".alert p").text(msg);
-    $(".alert").animate({"margin-top":'0px'},300);
+    $(".alert").animate({"margin-right":'0px'},300);
     
     var timeout = function(){
-        $(".alert").animate({"margin-top":'-75px'},300);
+        $(".alert").animate({"margin-right":'-210px'},300);
     } 
     setTimeout(timeout, 1000);
 }
