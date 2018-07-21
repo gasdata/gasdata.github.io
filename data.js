@@ -15,6 +15,8 @@ function firstOpen() { //ページオープン時
                     //異常なデータ スルー
                 }
             }
+        
+            setReloadTime();
             onOpenMap();
             setFirstMarker();
        }).fail(function(response) { //失敗
@@ -41,6 +43,8 @@ function getData() { //10秒毎
                 
                 setMarker(response.values);
             }
+            
+            setReloadTime();
        }).fail(function(response) { //失敗
             showAlert("データ取得に失敗しました。");
        });

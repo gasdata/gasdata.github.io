@@ -44,3 +44,10 @@ function showAlert(msg) {
     } 
     setTimeout(timeout, 1000);
 }
+
+function setReloadTime() {
+    var hour = new Date().getHours();
+    var minute = new Date().getMinutes();
+    var second = new Date().getSeconds();
+    $("#最終更新 nobr").text(" " + hour + ":" + minute + ":" + second);
+}
