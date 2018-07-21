@@ -3,7 +3,7 @@ var data = [];
 
 function firstOpen() {
     $.ajax({
-           url: "https://sheets.googleapis.com/v4/spreadsheets/1az8vFFz9h44o-eeaW4-3u6PQPC7-nZm0vzRJFmxlit8/values/%E3%82%B7%E3%83%BC%E3%83%881!A3:F6?key=AIzaSyDiSaDpQ61kQbjP5SfGhdiFfmloJrJvjEE",
+           url: "https://sheets.googleapis.com/v4/spreadsheets/185yPvhNOnMogOv-C3Xj0PC0r_4JazkcRrp6B7XHQ6q0/values/%E3%82%B7%E3%83%BC%E3%83%881!A3:F6?key=AIzaSyDiSaDpQ61kQbjP5SfGhdiFfmloJrJvjEE",
            datatype : 'jsonp',
        }).done(function(data) { //成功
             var firstdatacount = 0;
@@ -16,7 +16,6 @@ function firstOpen() {
                 }
             }
             onOpenMap();
-            firstSetMarker();
             setFirstData();
        }).fail(function(data) { //失敗
             showAlert("データ取得に失敗しました。");
