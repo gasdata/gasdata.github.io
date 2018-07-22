@@ -42,6 +42,8 @@ function getData() { //10秒毎
                 latestdata = response.values;
                 
                 setMarker(response.values);
+                
+                setLine();
             }
             
             setReloadTime();

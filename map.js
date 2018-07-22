@@ -13,7 +13,7 @@ function onOpenMap() { //最初に地図が表示されたときの処理
         streetViewControl: false,
         fullscreenControl: false,
         mapTypeControlOptions: { 
-            position: google.maps.ControlPosition.LEFT_BOTTOM,
+            position: google.maps.ControlPosition.TOP_LEFT,
         },
     };
     map = new google.maps.Map(document.getElementById("map"), options);
@@ -30,7 +30,10 @@ function setFirstMarker() {
             position: new google.maps.LatLng(parseFloat(latestdata[x][4]), parseFloat(latestdata[x][5])),
             map: map,
             icon: new google.maps.MarkerImage (
-                'point.png'
+                'point.png',
+                new google.maps.Size(16, 16), //アイコンのずれ調整
+                new google.maps.Point(0, 0),
+                new google.maps.Point(8, 8)
             ),
         });
         
@@ -48,6 +51,7 @@ function setFirstMarker() {
         
     }
     
+    setFirstLine();
     autoReload();
 }
 
@@ -64,12 +68,31 @@ function setFirstMarkerClick(x) {
     });
 }
 
+function setFirstLine() {
+    for(var x = data.length - 1; x - 1 >= 1; x--) {
+        var latlng = [new google.maps.LatLng(data[x][5], data[x][6]), new google.maps.LatLng(data[x - 1][5], data[x - 1] [6])];
+        
+        var lineoptions = {
+            path: latlng,
+            strokeWeight: 1,
+            strokeColor: "#0000ff",
+            strokeOpacity: "1.0"
+        };
+        
+        var line = new google.maps.Polyline(lineoptions);
+        line.setMap(map);
+    }
+}
+
 function setMarker(response) {
     marker = new google.maps.Marker({ //マーカー作成
         position: new google.maps.LatLng(response[0][4], response[0][5]),
         map: map,
         icon: new google.maps.MarkerImage(
-            "point.png"
+            "point.png",
+            new google.maps.Size(16, 16), //アイコンのずれ調整
+            new google.maps.Point(0, 0),
+            new google.maps.Point(8, 8)
         ),
     });
     
@@ -99,4 +122,18 @@ function setMarkerClick() {
         
         $(".datawindow").show();
     });
+}
+
+function setLine() {
+    var latlng = [new google.maps.LatLng(data[data.length - 1][5], data[data.length - 1][6]), new google.maps.LatLng(data[data.length - 2][5], data[data.length - 2][6])];
+        
+    var lineoptions = {
+        path: latlng,
+        strokeWeight: 1,
+        strokeColor: "#0000ff",
+        strokeOpacity: "1.0"
+    };
+    
+    var line = new google.maps.Polyline(lineoptions);
+    line.setMap(map);
 }
