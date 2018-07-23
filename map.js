@@ -65,6 +65,7 @@ function setFirstMarkerClick(x) {
         $("#経度 nobr").text(data[x][6]);
         
         $(".datawindow").show();
+        $("#map").css("width", "70%")
     });
 }
 
@@ -121,6 +122,7 @@ function setMarkerClick() {
         $("#経度 nobr").text(data[data.length - 1][6]);
         
         $(".datawindow").show();
+        $("#map").css("width", "70%")
     });
 }
 

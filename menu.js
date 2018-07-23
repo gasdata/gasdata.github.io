@@ -22,17 +22,18 @@ $("#close").click( function() {
 });
 
 //メニュー表示時にメニュー外クリックで閉じる
-$("#main").click( function() {
+$("#map").click( function() {
     if(!$('#open').is(':visible')) {
         $("#open").show();
         $("#close").hide();
         $(".menu").animate({"margin-left":'-190px'},300);
-    } 
+    }
 });
 
 //データウィンドウクリックしたとき
 $(".datawindow").click( function() {
     $(".datawindow").hide();
+    $("#map").css("width", "100%");
 });
 
 function showAlert(msg) {
