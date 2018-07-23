@@ -13,8 +13,9 @@ function onOpenMap() { //最初に地図が表示されたときの処理
         streetViewControl: false,
         fullscreenControl: false,
         mapTypeControlOptions: { 
-            position: google.maps.ControlPosition.TOP_LEFT,
+            position: google.maps.ControlPosition.LEFT_BOTTOM,
         },
+        clickableIcons: false,
     };
     map = new google.maps.Map(document.getElementById("map"), options);
     showAlert("地図を表示しました。");
@@ -30,7 +31,7 @@ function setFirstMarker() {
             position: new google.maps.LatLng(parseFloat(latestdata[x][4]), parseFloat(latestdata[x][5])),
             map: map,
             icon: new google.maps.MarkerImage (
-                'point.png',
+                './img/point.png',
                 new google.maps.Size(16, 16), //アイコンのずれ調整
                 new google.maps.Point(0, 0),
                 new google.maps.Point(8, 8)
@@ -47,26 +48,13 @@ function setFirstMarker() {
         data[latestdatacount - x][5] = latestdata[x][4];
         data[latestdatacount - x][6] = latestdata[x][5];
         
-        setFirstMarkerClick(latestdatacount - x);
+        setMarkerClick(latestdatacount - x);
         
     }
     
     setFirstLine();
     autoReload();
-}
-
-function setFirstMarkerClick(x) {
-    data[x][0].addListener('click', function() { // マーカーをクリックしたとき
-        $("#エアロゾル1 nobr").text(data[x][1]);
-        $("#エアロゾル2 nobr").text(data[x][2]);
-        $("#気温 nobr").text(data[x][3]);
-        $("#気圧 nobr").text(data[x][4]);
-        $("#緯度 nobr").text(data[x][5]);
-        $("#経度 nobr").text(data[x][6]);
-        
-        $(".datawindow").show();
-        $("#map").css("width", "70%")
-    });
+    setLastMarkerIcon();
 }
 
 function setFirstLine() {
@@ -90,7 +78,7 @@ function setMarker(response) {
         position: new google.maps.LatLng(response[0][4], response[0][5]),
         map: map,
         icon: new google.maps.MarkerImage(
-            "point.png",
+            "./img/point.png",
             new google.maps.Size(16, 16), //アイコンのずれ調整
             new google.maps.Point(0, 0),
             new google.maps.Point(8, 8)
@@ -109,20 +97,21 @@ function setMarker(response) {
     
     data.push(addarray);
     
-    setMarkerClick();
+    setMarkerClick(data.length - 1);
+    setLastMarkerIcon();
 }
 
-function setMarkerClick() {
-    data[data.length - 1][0].addListener('click', function() { // マーカーをクリックしたとき
-        $("#エアロゾル1 nobr").text(data[data.length - 1][1]);
-        $("#エアロゾル2 nobr").text(data[data.length - 1][2]);
-        $("#気温 nobr").text(data[data.length - 1][3]);
-        $("#気圧 nobr").text(data[data.length - 1][4]);
-        $("#緯度 nobr").text(data[data.length - 1][5]);
-        $("#経度 nobr").text(data[data.length - 1][6]);
+function setMarkerClick(x) {
+    data[x][0].addListener('click', function() { // マーカーをクリックしたとき
+        $("#エアロゾル1 nobr").text(data[x][1]);
+        $("#エアロゾル2 nobr").text(data[x][2]);
+        $("#気温 nobr").text(data[x][3]);
+        $("#気圧 nobr").text(data[x][4]);
+        $("#緯度 nobr").text(data[x][5]);
+        $("#経度 nobr").text(data[x][6]);
         
         $(".datawindow").show();
-        $("#map").css("width", "70%")
+        $("#map").css("width", "70%");
     });
 }
 
@@ -138,4 +127,35 @@ function setLine() {
     
     var line = new google.maps.Polyline(lineoptions);
     line.setMap(map);
+}
+
+function setLastMarkerIcon() {
+    
+    data[data.length - 1][0].setMap(null); //マーカー削除
+    data[data.length - 2][0].setMap(null); 
+    
+    var lastmarker = new google.maps.Marker({ //マーカー作成
+        position: new google.maps.LatLng(data[data.length - 1][5], data[data.length - 1][6]),
+        map: map,
+        icon: new google.maps.MarkerImage(
+            "./img/nowpoint.png"
+        ),
+    });
+    
+    var marker = new google.maps.Marker({ //マーカー作成
+        position: new google.maps.LatLng(data[data.length - 2][5], data[data.length - 2][6]),
+        map: map,
+        icon: new google.maps.MarkerImage(
+            "./img/point.png",
+            new google.maps.Size(16, 16), //アイコンのずれ調整
+            new google.maps.Point(0, 0),
+            new google.maps.Point(8, 8)
+        ),
+    });
+    
+    data[data.length - 1][0] = lastmarker;
+    data[data.length - 2][0] = marker;
+    
+    setMarkerClick(data.length - 1);
+    setMarkerClick(data.length - 2);
 }
