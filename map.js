@@ -18,7 +18,6 @@ function onOpenMap() { //最初に地図が表示されたときの処理
         clickableIcons: false,
     };
     map = new google.maps.Map(document.getElementById("map"), options);
-    showAlert("地図を表示しました。");
 }
 
 function setFirstMarker() {
@@ -99,6 +98,7 @@ function setMarker(response) {
     
     setMarkerClick(data.length - 1);
     setLastMarkerIcon();
+    showAlert("更新データを反映しました");
 }
 
 function setMarkerClick(x) {
