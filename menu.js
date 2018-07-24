@@ -4,6 +4,7 @@ $(document).ready( function(){
     $(".menu").css("margin-left", "-190px");
     $("#all").hide();
     $(".datawindow").hide();
+    $("#closebutton").hide();
 });
 
 //メニュー開いたとき
@@ -31,7 +32,8 @@ $("#map").click( function() {
 });
 
 //データウィンドウクリックしたとき
-$(".datawindow").click( function() {
+$("#closebutton").click( function() {
+    $("#closebutton").hide();
     $(".datawindow").hide();
     $("#map").css("width", "100%");
 });

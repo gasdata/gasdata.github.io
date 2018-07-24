@@ -115,7 +115,22 @@ body {
 
 #closebutton {
     font-size: 14px;
-    
+    position: absolute;
+    top: 20px;
+    right: 30%;
+    z-index: 5;
+    width: 25px;
+    height: 45px;
+    background: #eaeaea;
+}
+
+#closebutton img {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    top: 50%;
+    left: 50%;
+    margin: -8px;
 }
 
 .datawindow {
@@ -131,8 +146,17 @@ body {
     z-index: 2;
 }
 
+.datawindow #image {
+    top: 0px;
+    height: 15%;
+    width: 100%;
+    background: lightgreen;
+    
+}
+
 .datawindow #data {
     position: absolute;
+    top: 15%;
     width: 100%;
     height: 25%;
     background: #eaeaea;

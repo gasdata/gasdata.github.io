@@ -115,9 +115,13 @@ function setMarkerClick(x) {
         $("#経度 nobr").text(data[x][6]);
         $("#日").text(data[x][7]);
         $("#時").text(data[x][8]);
+        $("#map").css("width", "70%");
         
         $(".datawindow").show();
-        $("#map").css("width", "70%");
+        $("#closebutton").show();
+        
+        //画像取得
+        $(".datawindow #image").css("background-image", "url(https://maps.googleapis.com/maps/api/streetview?size=" + parseInt($(".datawindow #image").width()) + "x" + parseInt($(".datawindow #image").height())  + "&location=" + data[x][5] + "," + data[x][6] + "&fov=90&heading=0&pitch=15)");
     });
 }
 
