@@ -3,12 +3,12 @@ var data = [];
 
 function firstOpen() { //ページオープン時
     $.ajax({
-           url: "https://sheets.googleapis.com/v4/spreadsheets/185yPvhNOnMogOv-C3Xj0PC0r_4JazkcRrp6B7XHQ6q0/values/%E3%82%B7%E3%83%BC%E3%83%881!A3:F6?key=AIzaSyDiSaDpQ61kQbjP5SfGhdiFfmloJrJvjEE",
+           url: "https://sheets.googleapis.com/v4/spreadsheets/185yPvhNOnMogOv-C3Xj0PC0r_4JazkcRrp6B7XHQ6q0/values/%E3%82%B7%E3%83%BC%E3%83%881!A3:H6?key=AIzaSyDiSaDpQ61kQbjP5SfGhdiFfmloJrJvjEE",
            datatype : 'jsonp',
        }).done(function(response) { //成功
             var latestdatacount = 0;
             for(var x = 0; x < response.values.length; x++) {
-                if(response.values[x].length == 6) {
+                if(response.values[x].length == 8) {
                     latestdata[latestdatacount] = response.values[x];
                     latestdatacount++;
                 } else {
@@ -27,7 +27,7 @@ function firstOpen() { //ページオープン時
 function getData() { //10秒毎
     var getdata = [];
     $.ajax({
-           url: "https://sheets.googleapis.com/v4/spreadsheets/185yPvhNOnMogOv-C3Xj0PC0r_4JazkcRrp6B7XHQ6q0/values/%E3%82%B7%E3%83%BC%E3%83%881!A3:F6?key=AIzaSyDiSaDpQ61kQbjP5SfGhdiFfmloJrJvjEE",
+           url: "https://sheets.googleapis.com/v4/spreadsheets/185yPvhNOnMogOv-C3Xj0PC0r_4JazkcRrp6B7XHQ6q0/values/%E3%82%B7%E3%83%BC%E3%83%881!A3:H6?key=AIzaSyDiSaDpQ61kQbjP5SfGhdiFfmloJrJvjEE",
            datatype : 'jsonp',
        }).done(function(response) { //成功
             if(response.values.toString() == latestdata.toString()) {

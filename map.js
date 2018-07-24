@@ -46,6 +46,8 @@ function setFirstMarker() {
         data[latestdatacount - x][4] = latestdata[x][3];
         data[latestdatacount - x][5] = latestdata[x][4];
         data[latestdatacount - x][6] = latestdata[x][5];
+        data[latestdatacount - x][7] = latestdata[x][6];
+        data[latestdatacount - x][8] = latestdata[x][7];
         
         setMarkerClick(latestdatacount - x);
         
@@ -93,6 +95,8 @@ function setMarker(response) {
     addarray[4] = response[0][3];
     addarray[5] = response[0][4];
     addarray[6] = response[0][5];
+    addarray[7] = response[0][6];
+    addarray[8] = response[0][7];
     
     data.push(addarray);
     
@@ -109,6 +113,8 @@ function setMarkerClick(x) {
         $("#気圧 nobr").text(data[x][4]);
         $("#緯度 nobr").text(data[x][5]);
         $("#経度 nobr").text(data[x][6]);
+        $("#日").text(data[x][7]);
+        $("#時").text(data[x][8]);
         
         $(".datawindow").show();
         $("#map").css("width", "70%");
