@@ -121,7 +121,7 @@ body {
     z-index: 5;
     width: 25px;
     height: 45px;
-    background: #eaeaea;
+    background: white;
 }
 
 #closebutton img {
@@ -150,7 +150,9 @@ body {
     top: 0px;
     height: 15%;
     width: 100%;
-    background: lightgreen;
+}
+
+.datawindow #image img {
     
 }
 

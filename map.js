@@ -121,7 +121,7 @@ function setMarkerClick(x) {
         $("#closebutton").show();
         
         //画像取得
-        $(".datawindow #image").css("background-image", "url(https://maps.googleapis.com/maps/api/streetview?size=" + parseInt($(".datawindow #image").width()) + "x" + parseInt($(".datawindow #image").height())  + "&location=" + data[x][5] + "," + data[x][6] + "&fov=90&heading=0&pitch=15)");
+        $(".datawindow #image img").attr("src", "https://maps.googleapis.com/maps/api/streetview?size=" + parseInt($(".datawindow #image").width()) + "x" + parseInt($(".datawindow #image").height())  + "&location=" + data[x][5] + "," + data[x][6] + "&fov=90&heading=0&pitch=15");
     });
 }
 
