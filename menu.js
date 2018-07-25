@@ -5,6 +5,7 @@ $(document).ready( function(){
     $("#all").hide();
     $(".datawindow").hide();
     $("#closebutton").hide();
+    $(".glaph").hide();
 });
 
 //メニュー開いたとき
@@ -36,6 +37,16 @@ $("#closebutton").click( function() {
     $("#closebutton").hide();
     $(".datawindow").hide();
     $("#map").css("width", "100%");
+});
+
+//グラフ表示
+$("#glaphbutton").click( function() {
+    $(".glaph").show(); 
+});
+
+//グラフ閉じる
+$("#glaphclose").click( function() {
+     $(".glaph").hide(); 
 });
 
 function showAlert(msg) {
