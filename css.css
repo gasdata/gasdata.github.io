@@ -241,8 +241,8 @@ body {
 
 .glaph #glaphclose {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 15px;
+    right: 15px;
     height: 40px;
     width: 40px;
     padding:0;
@@ -255,4 +255,34 @@ body {
     cursor:pointer;
     border-radius: 5px;
     box-shadow:2px 2px #555;
+}
+
+.glaph ul {
+    margin-top: 50px;
+    padding: 0;
+    list-style: none;
+}
+
+.glaph ul li {
+    display: block;
+    padding: 15px;
+    margin-bottom: 1px;
+    margin-left: 75px;
+    width: 85px;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    background: green;
+}
+
+.glaph ul li:hover {
+    background-color: #04B431;
+    transition: background 0.5s;
+}
+
+.glaph #glaphelement {
+    position: absolute;
+    width: 90%;
+    top: 100px;
+    margin: auto;
 }

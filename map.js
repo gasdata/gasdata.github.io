@@ -56,13 +56,14 @@ function setFirstMarker() {
     setFirstLine();
     autoReload();
     setLastMarkerIcon();
+    loadGlaph();
 }
 
 function setFirstLine() {
     for(var x = data.length - 1; x - 1 >= 1; x--) {
         var latlng = [new google.maps.LatLng(data[x][5], data[x][6]), new google.maps.LatLng(data[x - 1][5], data[x - 1] [6])];
         
-        var lineoptions = {
+        var lineoptions = { 
             path: latlng,
             strokeWeight: 1,
             strokeColor: "#0000ff",
@@ -103,6 +104,7 @@ function setMarker(response) {
     setMarkerClick(data.length - 1);
     setLastMarkerIcon();
     showAlert("更新データを反映しました");
+    loadGlaph();
 }
 
 function setMarkerClick(x) {
@@ -121,12 +123,12 @@ function setMarkerClick(x) {
         $("#closebutton").show();
         
         //画像取得
-        $(".datawindow #image img").attr("src", "https://maps.googleapis.com/maps/api/streetview?size=" + parseInt($(".datawindow #image").width()) + "x" + parseInt($(".datawindow #image").height())  + "&location=" + data[x][5] + "," + data[x][6] + "&fov=90&heading=0&pitch=15");
+        $(".datawindow #image img").attr("src", "https://maps.googleapis.com/maps/api/streetview?size=" + parseInt($(".datawindow #image").width()) + "x" + parseInt($(".datawindow #image").height())  + "&location=" + data[x][5] + "," + data[x][6] + "&fov=90&heading=0&pitch=15&key=AIzaSyDIZkJCWawJJt0NK6QtSlx9RTcSnphmBY8");
     });
 }
 
 function setLine() {
-    var latlng = [new google.maps.LatLng(data[data.length - 1][5], data[data.length - 1][6]), new google.maps.LatLng(data[data.length - 2][5], data[data.length - 2][6])];
+    var latlng = [new google.maps.LatLng(data[data.length - 1][5], data[data.length - 1][6]), new google.maps.LatLng(data[data.length - 2][5], data[data.length - 2][6])]; 
         
     var lineoptions = {
         path: latlng,
@@ -163,7 +165,7 @@ function setLastMarkerIcon() {
         ),
     });
     
-    data[data.length - 1][0] = lastmarker;
+    data[data.length - 1][0] = lastmarker; //アイコン置き換え
     data[data.length - 2][0] = marker;
     
     setMarkerClick(data.length - 1);
